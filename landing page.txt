@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Food Corner</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: black;
+        }
+
+        /* Video background styles */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Dark overlay on top of the video */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);  /* Black with 70% opacity */
+            z-index: -0.5;
+        }
+
+        /* Hero section styles */
+        .hero {
+            position: relative;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            padding: 50px 20px;
+        }
+
+        /* Logo styling */
+        .logo {
+            width: 150px; /* Adjust the size as needed */
+            position: absolute;
+            top: 20px; /* Adjust the top margin as needed */
+            right: 20px; /* Position it to the right */
+            z-index: 1; /* Ensure it appears above the content */
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.9em;
+            margin: 10px 0;
+        }
+
+        .cta button {
+            background: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3em;
+            border-radius: 90px;
+            margin-top: 20px;
+        }
+
+        .cta button:hover {
+            background: #1500ff;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 1000;
+            width: 100%;
+            max-width: 600px;
+            color: black;
+        }
+
+        .popup-header {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Popup form styling */
+        .popup form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .popup input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .popup button {
+            background: #6200ea;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1.1em;
+        }
+
+        .popup button:hover {
+            background: #4500b5;
+        }
+
+        /* Overlay styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video class="video-bg" autoplay muted loop>
+        <source src="2894881-uhd_3840_2160_24fps.mp4" type="video/mp4"> <!-- Update this path if needed -->
+    </video>
+    
+    <!-- Dark Overlay -->
+    <div class="video-overlay"></div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <!-- Logo -->
+        <img src="path-to-your-logo/logo.png" alt="The Food Corner Logo" class="logo">
+        
+        <h1>THE FOOD CORNER</h1>
+        <p>We're thrilled to have you with us!<br> Kindly provide your contact details to enhance your food experience.</p>
+        <div class="cta">
+            <button onclick="openPopup()">Contact Us</button>
+        </div>
+    </div>
+
+    <!-- Popup and Overlay for Contact Form -->
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+    <div class="popup" id="popup">
+        <div class="popup-header">Enter Your Contact Details</div>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Full Name" required />
+            <input type="tel" name="phone" placeholder="Phone" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="text" name="cuisine" placeholder="Favourite Cuisine" required />
+            <input type="text" name="spice" placeholder="Spice Level" required />
+            <input type="text" name="allergies" placeholder="Allergies" required />
+            <input type="text" name="dish" placeholder="Favourite Dish/Beverage" required />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Open popup
+        function openPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        // Close popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent actual form submission
+            alert('Thank you for submitting your details!');
+            closePopup();
+        });
+    </script>
+</body>
+</html>
